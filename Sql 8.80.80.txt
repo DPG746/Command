@@ -1,0 +1,471 @@
+1.Even or Odd Number
+2.Reverse of a Number
+3.Student Result Processing
+4.Employee Salary Calculator
+5.Book Shop Discount
+6.Electricity Bill Calculator
+7.Multiplication Table
+8.Simple Banking System
+9.Shopping Bill Generator
+10.Number Analysis
+11.System Information Report
+12.Student Workspace Creation
+13.File Backup Utility
+14.Directory Analyzer
+15.Text File Report
+16.File Organizer
+17.Employee File Analyzer
+18.Temporary File Cleanup
+19.Project Directory Generator
+20.System Maintenance Report
+
+
+
+Problem 1: Even_odd Number
+
+
+#!/bin/bash
+echo -n "Enter a number: "
+read num
+
+if [ $((num % 2)) -eq 0 ]; then
+    echo "$num is Even"
+else
+    echo "$num is Odd"
+fi
+
+........................................................
+
+
+Problem 2: Reverse of a Number
+
+#!/bin/bash
+echo -n "Enter a number: "
+read num
+
+rev=0
+while [ $num -gt 0 ]; do
+    rem=$((num % 10))
+    rev=$((rev * 10 + rem))
+    num=$((num / 10))
+done
+
+echo "Reverse = $rev"
+
+
+............................................................
+
+
+Problem 3: Student Result Processing
+
+#!/bin/bash
+echo -n "Student Name : "
+read name
+echo "Enter marks for 5 subjects (space separated): "
+read m1 m2 m3 m4 m5
+
+total=$((m1 + m2 + m3 + m4 + m5))
+avg=$((total / 5))
+
+if [ $avg -ge 90 ]; then grade="A"
+elif [ $avg -ge 75 ]; then grade="B"
+elif [ $avg -ge 60 ]; then grade="C"
+else grade="Fail"
+fi
+
+echo "Student Name : $name"
+echo "Total = $total"
+echo "Average = $avg"
+echo "Grade = $grade"
+
+.........................................................
+
+
+
+Problem 4: Employee Salary Calculator
+
+#!/bin/bash
+echo -n "Employee ID: "
+read id
+echo -n "Employee Name : "
+read name
+echo -n "Basic Salary : "
+read basic
+
+hra=$((basic * 20 / 100))
+da=$((basic * 10 / 100))
+gross=$((basic + hra + da))
+
+echo "Employee Name : $name"
+echo "Basic Salary : $basic"
+echo "HRA : $hra"
+echo "DA : $da"
+echo "Gross Salary : $gross"
+
+...........................................................
+
+Problem 5: Book Shop Discount
+
+#!/bin/bash
+echo -n "Book Name: "
+read name
+echo -n "Book Price : "
+read price
+
+if [ $price -ge 1000 ]; then 
+    discount=$((price * 20 / 100))
+elif [ $price -ge 500 ]; then 
+    discount=$((price * 10 / 100))
+else 
+    discount=$((price * 5 / 100))
+fi
+
+final=$((price - discount))
+
+echo "Book Price : $price"
+echo "Discount : $discount"
+echo "Final Price : $final"
+
+............................................................
+
+Problem 6: Electricity Bill Calculator
+
+#!/bin/bash
+echo -n "Customer Name: "
+read name
+echo -n "Units : "
+read units
+
+if [ $units -le 100 ]; then
+    bill=$((units * 2))
+elif [ $units -le 200 ]; then
+    bill=$((100 * 2 + (units - 100) * 3))
+else
+    bill=$((100 * 2 + 100 * 3 + (units - 200) * 5))
+fi
+
+echo "Electricity Bill = ₹$bill"
+
+..........................................................
+
+Problem 7: Multiplication Table
+
+#!/bin/bash
+echo -n "Enter Number : "
+read num
+
+for i in {1..10}; do
+    echo "$num x $i = $((num * i))"
+done
+
+...........................................................
+
+
+Problem 8: Simple Banking System
+
+#!/bin/bash
+echo -n "Account Holder Name: "
+read name
+echo -n "Account Number: "
+read acc
+echo -n "Current Balance: "
+read bal
+
+echo "1. Deposit"
+echo "2. Withdraw"
+echo "3. Balance"
+echo -n "Enter Choice : "
+read choice
+
+case $choice in
+    1) 
+        echo -n "Enter Amount : "
+        read amt
+        bal=$((bal + amt))
+        echo "Updated Balance : $bal" 
+        ;;
+    2) 
+        echo -n "Enter Amount : "
+        read amt
+        if [ $amt -le $bal ]; then 
+            bal=$((bal - amt))
+            echo "Updated Balance : $bal"
+        else 
+            echo "Insufficient funds."
+        fi 
+        ;;
+    3) 
+        echo "Updated Balance : $bal" 
+        ;;
+    *) 
+        echo "Invalid Choice" 
+        ;;
+esac
+
+................................................................
+
+Problem 9: Shopping Bill Generator
+
+#!/bin/bash
+echo -n "Product : "
+read prod
+echo -n "Quantity : "
+read qty
+echo -n "Price per item : "
+read price
+
+total=$((qty * price))
+gst=$((total * 18 / 100))
+final=$((total + gst))
+
+echo "Product : $prod"
+echo "Quantity : $qty"
+echo "Price : $price"
+echo "Total : $total"
+echo "GST : $gst"
+echo "Final Amount : $final"
+
+.....................................................................
+
+Problem 10: Number Analysis
+
+#!/bin/bash
+echo -n "Enter Number : "
+read num
+
+if [ $num -gt 0 ]; then 
+    echo "Positive Number"
+elif [ $num -lt 0 ]; then 
+    echo "Negative Number"
+else 
+    echo "Zero"
+fi
+
+if [ $((num % 2)) -eq 0 ]; then 
+    echo "Even Number"
+else 
+    echo "Odd Number"
+fi
+
+echo "Square = $((num * num))"
+echo "Cube = $((num * num * num))"
+
+.........................................................
+
+Problem 11: System Information Report
+
+#!/bin/bash
+
+echo "========== System Information Report =========="
+echo "Current Username : $(whoami)"
+echo "Current Date & Time : $(date)"
+echo "Hostname : $(hostname)"
+echo "Current Working Directory : $(pwd)"
+echo "Available Disk Space :"
+df -h .
+echo "System Uptime :"
+uptime
+
+
+............................................................
+
+
+Problem 12: Student Workspace Creation
+
+#!/bin/bash
+
+echo -n "Enter Student Name: "
+read student
+
+mkdir -p "$student"/{Assignments,Notes,Projects}
+touch "$student"/README.txt
+
+echo "Directory Structure:"
+tree "$student"
+
+...............................................................
+
+
+Problem 13: File Backup Utility
+
+#!/bin/bash
+
+echo -n "Enter Source File: "
+read source
+
+echo -n "Enter Destination Directory: "
+read dest
+
+if [ -f "$source" ]; then
+    cp "$source" "$dest"
+    echo "File copied successfully."
+else
+    echo "Source file does not exist."
+fi
+
+
+...............................................................
+
+
+Problem 14: Directory Analyzer
+
+#!/bin/bash
+
+echo -n "Enter Directory Name: "
+read dir
+
+if [ -d "$dir" ]; then
+    echo "Total Files : $(find "$dir" -type f | wc -l)"
+    echo "Total Subdirectories : $(find "$dir" -type d | wc -l)"
+    echo "Directory Size : $(du -sh "$dir" | cut -f1)"
+    echo "Files Present:"
+    find "$dir" -type f
+else
+    echo "Directory does not exist."
+fi
+
+..................................................................
+
+
+Problem 15: Text File Report
+
+#!/bin/bash
+
+echo -n "Enter Text File Name: "
+read file
+
+if [ -f "$file" ]; then
+    echo "Lines : $(wc -l < "$file")"
+    echo "Words : $(wc -w < "$file")"
+    echo "Characters : $(wc -c < "$file")"
+    echo "First Five Lines:"
+    head -5 "$file"
+    echo "Last Five Lines:"
+    tail -5 "$file"
+else
+    echo "File does not exist."
+fi
+
+
+..................................................
+
+
+Problem 16: File Organizer
+
+
+#!/bin/bash
+
+mkdir -p TextFiles Images Documents
+
+mv *.txt TextFiles/ 2>/dev/null
+mv *.jpg *.png Images/ 2>/dev/null
+mv *.pdf Documents/ 2>/dev/null
+
+echo "TextFiles:"
+ls TextFiles
+
+echo "Images:"
+ls Images
+
+echo "Documents:"
+ls Documents
+
+
+..........................................................
+
+
+Problem 17: Employee File Analyzer
+
+
+#!/bin/bash
+
+echo -n "Enter Employee File Name: "
+read file
+
+if [ -f "$file" ]; then
+    echo "First Employee Record:"
+    head -1 "$file"
+
+    echo "Last Employee Record:"
+    tail -1 "$file"
+
+    echo "Total Employee Records:"
+    wc -l < "$file"
+
+    cp "$file" employee_backup.txt
+    echo "Backup created as employee_backup.txt"
+else
+    echo "File does not exist."
+fi
+
+
+
+................................................................
+
+
+
+Problem 18: Temporary File Cleanup
+
+
+
+#!/bin/bash
+
+mkdir -p Archive
+
+count=0
+
+for file in *.log *.tmp
+do
+    if [ -f "$file" ]; then
+        mv "$file" Archive/
+        echo "$file moved."
+        count=$((count + 1))
+    fi
+done
+
+echo "Total Files Moved : $count"
+
+
+............................................................
+
+
+Problem 19: Project Directory Generator
+
+#!/bin/bash
+
+echo -n "Enter Project Name: "
+read project
+
+mkdir -p "$project"/{Source,Header,Input,Output,Documentation}
+touch "$project"/README.txt
+
+echo "Project Directory Structure:"
+tree "$project"
+
+
+..............................................................
+
+Problem 20: System Maintenance Report
+
+
+#!/bin/bash
+
+report="SystemReport.txt"
+
+echo "========== System Maintenance Report ==========" > "$report"
+echo "Current User : $(whoami)" >> "$report"
+echo "Date & Time : $(date)" >> "$report"
+
+echo "" >> "$report"
+echo "Logged-in Users:" >> "$report"
+who >> "$report"
+
+echo "" >> "$report"
+echo "Memory Usage:" >> "$report"
+free -h >> "$report"
+
+echo "" >> "$report"
+echo "Disk Usage:" >> "$report"
+df -h >> "$report"
+
+echo "System maintenance report generated successfully."
